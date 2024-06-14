@@ -54,7 +54,7 @@ def generate_unique_data(existing_data, num_samples):
 # 主程序流程
 filename = 'generated_data_2th.csv'
 existing_data = load_data_from_csv(filename)
-num_new_samples = 20000
+num_new_samples = 30000
 if num_new_samples > 0:
     updated_data = generate_unique_data(existing_data, num_new_samples)
     # print(updated_data)
