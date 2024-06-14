@@ -108,13 +108,13 @@ def load_data_from_csv(filename):
     return data
 
 # 加载已有数据
-filename = 'generated_data.csv'
+filename = 'generated_data_2th.csv'
 try:
     existing_data = load_data_from_csv(filename)
 except FileNotFoundError:
     existing_data = []
 
 # 生成数据
-num_new_samples = 1000
+num_new_samples = 60000
 updated_data = generate_unique_data(existing_data, num_new_samples)
 save_data_to_csv(updated_data, filename)

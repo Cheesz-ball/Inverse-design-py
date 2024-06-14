@@ -317,8 +317,8 @@ def crop_white_areas(image_path):
 progress_file_path = os.path.join(folder_paths[3], "progress.txt")
 now = load_progress(progress_file_path)
 # 仿真总数量，每50个仿真在一个CST文件里（减少硬盘占用）
-num_files = 1000
-n_single_sim = 10
+num_files = 30000
+n_single_sim = 30
 j_num = (num_files-now)//n_single_sim
 
 for j in range(0, j_num):
@@ -697,9 +697,13 @@ End With
         create_polygon("TestPolygon2", "Curve2", -x_coords2 - 5, y_coords2 + 5)
         create_polygon("TestPolygon3", "Curve3", -x_coords3 - 5, -y_coords3 - 5)
         create_polygon("TestPolygon4", "Curve4", x_coords4 + 5, -y_coords4 - 5)
+        wcs_face('PI','sub', faceid=1)
         ExtrudeCurve("0.2","al","Curve1","al1","Aluminum")
+        wcs_face('PI','sub', faceid=1)
         ExtrudeCurve("0.2","al","Curve2","al2","Aluminum")
+        wcs_face('PI','sub', faceid=1)
         ExtrudeCurve("0.2","al","Curve3","al3","Aluminum")
+        wcs_face('PI','sub', faceid=1)
         ExtrudeCurve("0.2","al","Curve4","al4","Aluminum")
         #运行仿真
 
@@ -708,9 +712,7 @@ End With
         except RuntimeError:
             # 忽略运行时错误
             pass
-
-
-        modelers.run_solver()        
+     
         exdata(sp="S2,1",type="mag",format="txt",path=folder_paths[1],name=f"output{i}")        
         modelers.add_to_history('detresult','DeleteResults')
         modelers.add_to_history('ComponentDelete','Component.Delete "al" ')
